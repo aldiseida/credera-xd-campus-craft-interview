@@ -55,6 +55,29 @@
   gap: 12px;
 }
 
+.content-card {
+  position: relative;
+}
+
+.post-expand-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+  color: var(--midnight_black);
+  font-size: 24px;
+  cursor: pointer;
+}
+
 /* SKELETON LOADING */
 .post-content.skeleton-block {
   height: 125px;
