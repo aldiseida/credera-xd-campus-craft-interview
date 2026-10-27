@@ -38,12 +38,18 @@ export const ProfilePosts = () => {
           <div className="post-author fade-in">
             <div className="post-author-avatar fade-in"></div>
             <div className="post-author-info fade-in">
-              <p className="page-paragraph">
-                {pinnedPost.authorFirstName} {pinnedPost.authorLastName}
-              </p>
-              <p className="page-micro">
-                {pinnedPost.jobTitle} @ {pinnedPost.companyName}
-              </p>
+              <div className="post-author-row">
+                <p className="page-paragraph">
+                  {pinnedPost.authorFirstName} {pinnedPost.authorLastName}
+                </p>
+                <p className = "page-paragraph">{pinnedPost.publishDate.split('T')[0]}</p>
+              </div>
+              <div className="post-author-row">
+                <p className="page-micro">
+                  {pinnedPost.jobTitle} @ {pinnedPost.companyName}
+                </p>
+                <p className = "page-micro">{pinnedPost.city}, {pinnedPost.state}</p>
+              </div>
             </div>
           </div>
           <p className="page-body post-content fade-in">{pinnedPost.post}</p>
