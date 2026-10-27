@@ -36,13 +36,18 @@
 }
 
 .profile-list-item-avatar {
-  display: inline-block;
+  display: flex;
   background-color: var(--grayscale_2);
   border-radius: 50%;
   overflow: hidden;
   height: 90px;
   width: 90px;
   min-width: 90px;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--grayscale_7);
 }
 
 .profile-list-item-avatar img {

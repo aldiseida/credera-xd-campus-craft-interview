@@ -64,11 +64,12 @@ export const ProfileFriends = () => {
         <h2 className="page-heading-2">Friends</h2>
         <ul className="profile-friends-list">
           {sortedFriends.map((friend, index) => (
+            
             <li className="profile-list-item fade-in" key={index}>
               <div
                 className="profile-list-item-avatar"
                 aria-label="Stuart Raymond"
-              ></div>
+              >{friend.name.split(' ')[0][0]}{friend.name.split(' ')[1][0]}</div>
               <div className = "profile-list-item-info">
                 <div className="profile-list-item-name">
                   <p className="page-paragraph">{friend.name}</p>

@@ -36,7 +36,8 @@ export const ProfilePosts = () => {
       <div className="profile-post-results">
         <div className="content-card">
           <div className="post-author fade-in">
-            <div className="post-author-avatar fade-in"></div>
+            <div className="post-author-avatar fade-in">
+              {pinnedPost.authorFirstName.at(0)}{pinnedPost.authorLastName.at(0)}</div>
             <div className="post-author-info fade-in">
               <div className="post-author-row">
                 <p className="page-paragraph">
