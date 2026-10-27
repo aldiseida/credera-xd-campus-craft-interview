@@ -2,6 +2,19 @@ import './style.css';
 import { getProfileData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 
+const getActivityColor = (activity) => {
+  switch (activity) {
+    case 'active':
+      return '#52C1AD';
+    case 'moderate':
+      return '#58B1C9';
+    case 'low':
+      return '#C152A2';
+    default:
+      return '#C4C4C4';
+  }
+};
+
 export const ProfileGroups = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['profile'],
@@ -52,6 +65,7 @@ export const ProfileGroups = () => {
             <a
               className="profile-group-results-card content-card fade-in"
               href={group.href}
+              style={{backgroundColor: getActivityColor(group.activity)}}
             >
               <div className="profile-group-avatar">
                 <img src={group.image} />
