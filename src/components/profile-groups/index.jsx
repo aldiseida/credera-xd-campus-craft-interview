@@ -55,12 +55,17 @@ export const ProfileGroups = () => {
     );
 
   const { groups } = data;
+  const sortedGroups = [...groups].sort((a, b) => {
+    if(a.favorite && !b.favorite){ return -1; }
+    if(!a.favorite && b.favorite){ return 1; }
+    return 0;
+  });
 
   return (
     <section id="profile-groups">
       <h2 className="page-heading-2">Groups</h2>
       <ul className="profile-group-results fade-in">
-        {groups.map(group => (
+        {sortedGroups.map(group => (
           <li className="profile-group-results-item" key={group.id}>
             <a
               className="profile-group-results-card content-card fade-in"
@@ -72,6 +77,9 @@ export const ProfileGroups = () => {
               </div>
               <div className="profile-group-content">
                 <p className="page-paragraph">{group.name}</p>
+                {group.favorite && (
+                    <p className="profile-group-favorite">★</p>
+                )}
               </div>
             </a>
             {/* <pre>{JSON.stringify(group, null, 2)}</pre> */}
