@@ -32,18 +32,20 @@
 }
 
 .profile-info-name {
-  margin-bottom: 4px;
+  margin-bottom: 14px;
   text-align: left;
   position: relative;
+  display: inline-block;
 }
 
 .profile-info-name .profile-underline {
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 0;
+  width: 100%;
 }
 
-/* SKELTON LOADING */
+/* SKELETON LOADING */
 
 #profile-header .skeleton-block--half {
   height: 42px;

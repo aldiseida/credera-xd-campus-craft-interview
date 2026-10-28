@@ -2,6 +2,19 @@ import './style.css';
 import { getProfileData } from '../../services/profile';
 import { useQuery } from '@tanstack/react-query';
 
+const getActivityColor = (activity) => {
+  switch (activity) {
+    case 'active':
+      return '#52C1AD';
+    case 'moderate':
+      return '#58B1C9';
+    case 'low':
+      return '#C152A2';
+    default:
+      return '#C4C4C4';
+  }
+};
+
 export const ProfileGroups = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['profile'],
@@ -42,22 +55,31 @@ export const ProfileGroups = () => {
     );
 
   const { groups } = data;
+  const sortedGroups = [...groups].sort((a, b) => {
+    if(a.favorite && !b.favorite){ return -1; }
+    if(!a.favorite && b.favorite){ return 1; }
+    return 0;
+  });
 
   return (
     <section id="profile-groups">
       <h2 className="page-heading-2">Groups</h2>
       <ul className="profile-group-results fade-in">
-        {groups.map(group => (
+        {sortedGroups.map(group => (
           <li className="profile-group-results-item" key={group.id}>
             <a
               className="profile-group-results-card content-card fade-in"
               href={group.href}
+              style={{backgroundColor: getActivityColor(group.activity)}}
             >
               <div className="profile-group-avatar">
                 <img src={group.image} />
               </div>
               <div className="profile-group-content">
                 <p className="page-paragraph">{group.name}</p>
+                {group.favorite && (
+                    <p className="profile-group-favorite">★</p>
+                )}
               </div>
             </a>
             {/* <pre>{JSON.stringify(group, null, 2)}</pre> */}
